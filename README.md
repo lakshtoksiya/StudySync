@@ -9,7 +9,8 @@ A notes-sharing web app for college classes. Students join a private community (
 - Subjects load from a CSE template (Sem 1 to 7) and can be edited by the Admin or CR
 - Classroom feed for daily class notes, plus per-subject tabs: Class Notes (Daily), Units, Assignments, PYQs, Important
 - Upload several subjects at once; photos are compressed in the browser; one notification per upload
-- Note viewer with zoom, PDF view, download, save, "helpful" votes and correction suggestions
+- Note viewer with zoom, PDF view, download, save, "helpful" votes, note editing, and correction suggestions that the uploader or an Admin/CR can accept or reject
+- Profile page (display name, college, branch, year, password change) and an upload progress bar
 - Light and dark theme, responsive layout with a mobile drawer
 
 ## Architecture
@@ -65,4 +66,4 @@ Permission helpers used by the policies: `is_member`, `is_staff`, `is_admin`.
 
 Working: login, communities, subjects, uploads, Classroom feed, viewer, saves, alerts, member management.
 
-Not built in the frontend yet: accept or reject screen for correction suggestions (the database functions exist), note editing, a "start new semester" button, push notifications, more branches and Medical templates.
+Not built in the frontend yet: a "start new semester" button, push notifications, Word (.docx) uploads, full-text search inside note files (OCR), more branches and Medical templates.
