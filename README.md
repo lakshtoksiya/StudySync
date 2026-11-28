@@ -11,6 +11,7 @@ A notes-sharing web app for college classes. Students join a private community (
 - Upload several subjects at once; photos are compressed in the browser; one notification per upload
 - Note viewer with zoom, PDF view, download, save, "helpful" votes, note editing, and correction suggestions that the uploader or an Admin/CR can accept or reject
 - Profile page (display name, college, branch, year, password change) and an upload progress bar
+- Web Push notifications: when someone uploads notes, every other member gets a phone or browser notification, even when the app is closed
 - Light and dark theme, responsive layout with a mobile drawer
 
 ## Architecture
@@ -24,6 +25,7 @@ Supabase (backend)
   |- Postgres    14 tables, functions, triggers, Row Level Security
   |- Storage     private "notes" bucket (photos and PDFs, 20 MB limit)
   |- Realtime    notifications table
+  |- Edge Function  send-push: a Database Webhook on new notifications triggers it, and it sends Web Push messages
 ```
 
 There is no separate server. The frontend talks to Supabase directly, and access is enforced inside the database with Row Level Security: a note is only visible to active members of its community.
@@ -35,6 +37,9 @@ There is no separate server. The frontend talks to Supabase directly, and access
 | `01_templates_cse.sql` | Creates the `templates` table and loads the CSE subject lists for Sem 1 to 7 |
 | `02_full_schema.sql` | All other tables, permission helpers, RPC functions, triggers, RLS policies and the storage bucket |
 | `03_english_messages_patch.sql` | Replaces database messages with English text (run after 02) |
+| `04_push_subscriptions.sql` | `push_subscriptions` table, RLS and the `save_push_subscription` function |
+
+Edge Function: `supabase/functions/send-push/index.ts`. `tools/vapid-keys.html` generates the VAPID key pair in the browser.
 
 Tables: `profiles`, `communities`, `members`, `terms`, `subjects`, `subject_requests`, `notes`, `note_files`, `note_edits`, `note_suggestions`, `likes`, `saves`, `notifications`, `templates`.
 
@@ -53,8 +58,9 @@ Permission helpers used by the policies: `is_member`, `is_staff`, `is_admin`.
 2. In the SQL Editor, run the three files in `supabase/migrations` in order (01, 02, 03). If a "Potential issue" popup appears, choose "Run and enable RLS".
 3. Copy `config.example.js` to `config.js` and paste your Project URL and anon (publishable) key from Supabase, Project Settings, API.
 4. Optional for local testing: in Authentication, Sign In / Providers, switch off "Confirm email".
-5. Open `index.html` in a browser, or upload the folder to Netlify Drop.
-6. For join links and Google login on a hosted site, add your site address under Authentication, URL Configuration (Site URL and Redirect URLs).
+5. For push alerts: generate VAPID keys with `tools/vapid-keys.html`, deploy the `send-push` Edge Function, add the secrets `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`, `WEBHOOK_SECRET`, create a Database Webhook on `notifications` (insert) that calls it with the header `x-webhook-secret`, and put the public key in `config.js` as `vapid`. Host `sw.js` and `manifest.json` next to `index.html`.
+6. Open `index.html` in a browser, or upload the folder to Netlify Drop.
+7. For join links and Google login on a hosted site, add your site address under Authentication, URL Configuration (Site URL and Redirect URLs).
 
 ## Security notes
 
@@ -66,4 +72,4 @@ Permission helpers used by the policies: `is_member`, `is_staff`, `is_admin`.
 
 Working: login, communities, subjects, uploads, Classroom feed, viewer, saves, alerts, member management.
 
-Not built in the frontend yet: a "start new semester" button, push notifications, Word (.docx) uploads, full-text search inside note files (OCR), more branches and Medical templates.
+Not built in the frontend yet: a "start new semester" button, Word (.docx) uploads, full-text search inside note files (OCR), more branches and Medical templates.

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>StudySync</title>
+<link rel="manifest" href="manifest.json"><meta name="theme-color" content="#4F7A5C"><link rel="apple-touch-icon" href="icon-192.png">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <style>
@@ -60,18 +61,49 @@ h2.sec{font-size:18px;letter-spacing:-.02em;margin:22px 0 10px}
 .drop{position:relative;display:block;border:2px dashed var(--line);border-radius:14px;padding:18px;text-align:center;color:var(--mut);font-size:14px}.drop input{position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer}
 .nt{padding:10px 12px;border-radius:12px;font-size:14px;margin-bottom:6px}.nt.un{background:var(--soft)}
 #toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:80;background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;max-width:90vw}.hide{display:none}.ov{display:none}
+.fs{position:fixed;inset:0;z-index:90;background:#000;display:flex;flex-direction:column;color:#fff}
+.fsb{display:flex;align-items:center;gap:10px;padding:10px 12px;background:#000}.fsb .grow{text-align:center;font-weight:600}
+.fsb .btn{background:#1c1c1c;color:#fff;border:0;padding:8px 14px;text-decoration:none}.fsc{flex:1;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}.fsc::-webkit-scrollbar{display:none}
+.fsl{flex:0 0 100%;scroll-snap-align:center;overflow:auto;display:flex;align-items:center;justify-content:center}.fsl img{max-width:100%;max-height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none}
+.fsl.z{display:block}.fsl.z img{max-width:none;max-height:none;width:250%}.fsl iframe{width:100%;height:100%;border:0;background:#fff}
 @media(min-width:700px){.mo{align-items:center}.sh{border-radius:22px}}
 @media(max-width:860px){.shell{display:block}.side{position:fixed;left:0;top:0;bottom:0;width:260px;z-index:50;transform:translateX(-100%);transition:transform .2s}
 body.nav .side{transform:none}body.nav .ov{display:block;position:fixed;inset:0;background:#0006;z-index:40}.hb{display:block}.top{padding:12px 16px}.pg{padding:16px 16px 80px}.hero h1{font-size:24px}.grid{grid-template-columns:1fr}}
+
+/* ---- refreshed look: softer palette, lighter type, pop-up cards ---- */
+:root{--bg:#FAF8F3;--card:#FFFFFF;--side:#F1EEE6;--ink:#1E2B35;--mut:#6B7580;--line:#E8E3D8;--pri:#2F6B57;--prih:#25574A;--soft:#DCEBE2;--coral:#D9603F}
+[data-theme=dark]{--bg:#12181D;--card:#1B242B;--side:#161E24;--ink:#ECEFF1;--mut:#9AA6B0;--line:#2B363F;--pri:#6FB59A;--prih:#86C7AD;--soft:#22332D;--coral:#F08A6C}
+body{-webkit-font-smoothing:antialiased}.side{background:var(--side)}.brand{font-weight:700}
+.eyebrow2{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--pri);margin-bottom:8px}
+.ph{font-size:30px;font-weight:500;letter-spacing:-.025em;line-height:1.15;margin:0 0 20px}
+.hero h1,.auth h1,.metric b{font-weight:500}h2.sec{font-weight:500;font-size:20px}
+.chip{border:0;background:transparent;color:var(--mut);font-weight:500;padding:8px 14px}.chip:hover{background:var(--soft)}.chip.on{background:var(--soft);color:var(--pri);font-weight:600}
+#q{border-radius:999px;padding-left:42px;background:var(--card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%239AA3AB' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M21 21l-4.3-4.3'/%3E%3C/svg%3E") no-repeat 15px center}
+.grid{grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:20px}
+.card{border-radius:20px;box-shadow:0 1px 2px #1e2b350d;transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .22s,border-color .22s}
+.card:hover{transform:translateY(-6px) scale(1.025);box-shadow:0 22px 40px -14px #1e2b3544;border-color:transparent;position:relative;z-index:2}
+.cover{height:128px;padding:14px;color:#4A4F5A}
+.c1{background:#F3CFC2}.c2{background:#F1E0AE}.c3{background:#DDD7E8}.c4{background:#CBDDEC}.c5{background:#CFE5D8}.c6{background:#ECCDD9}
+.doc{display:inline-flex;opacity:.75;transition:transform .22s}.card:hover .doc{transform:rotate(-8deg) scale(1.12)}
+.bm{width:36px;height:36px;display:grid;place-items:center;background:#fff;color:#7A838C;box-shadow:0 2px 6px #0001;transition:transform .15s}.bm:hover{transform:scale(1.1)}.bm.on{color:var(--pri)}
+.pn{font-size:12px;font-weight:500;color:#555B66}
+.cb{padding:16px 18px 18px}.r1{display:flex;justify-content:space-between;align-items:center}.meta{font-size:13px;font-weight:600}.hv{font-size:12px;color:var(--mut)}
+.cb h3{font-size:17px;font-weight:500;letter-spacing:-.01em;margin:6px 0 4px;min-height:44px;line-height:1.3}
+.sub{font-size:13px;color:var(--mut);margin-bottom:14px}.foot{font-size:13px}.who{font-weight:500;color:var(--ink)}.ago{margin-left:auto;color:var(--mut);font-size:12px}
+.av2{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;font-size:11px;font-weight:600;color:#5A4A3F;flex:none}
+@media(max-width:860px){.grid{grid-template-columns:1fr}.ph{font-size:25px}}
+@media(hover:none){.card:hover{transform:none;box-shadow:0 1px 2px #1e2b350d}}
+@media(prefers-reduced-motion:reduce){.card,.card:hover,.doc,.card:hover .doc{transition:none;transform:none!important}}
+.ni{padding:11px 12px;font-size:15px}.nl2{display:flex;align-items:center;gap:12px;min-width:0}.ni .i{flex:none}.ni.on .i{color:var(--pri)}
 </style></head>
 <body><div id="app"></div><div id="modal"></div><div id="toast" class="hide" data-testid="upload-success-toast"></div>
 <script src="config.js"></script>
 <script>
-const {url:SUPABASE_URL='PASTE_PROJECT_URL_HERE',key:SUPABASE_KEY='PASTE_ANON_KEY_HERE'}=window.STUDYSYNC||{};
+const {url:SUPABASE_URL='PASTE_PROJECT_URL_HERE',key:SUPABASE_KEY='PASTE_ANON_KEY_HERE',vapid:VAPID_KEY=''}=window.STUDYSYNC||{};
 const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const esc=t=>String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const S={user:null,name:'',view:'home',comms:[],c:null,tab:'overview',subs:[],notes:[],members:[],term:null,subj:null,stab:'class',notifs:[],flt:'',q:'',f:{cat:'class_note',per:'all'},n:6,showF:false,saved:new Set()};
+const S={user:null,name:'',view:'home',comms:[],c:null,tab:'overview',subs:[],notes:[],members:[],term:null,subj:null,stab:'class',notifs:[],flt:'',q:'',f:{cat:'class_note',per:'all'},n:6,showF:false,saved:new Set(),push:''};
 const CAT={class_note:'Class Notes (Daily)',unit_note:'Unit (Chapter\u2019s Full Notes)',assignment:'Assignment',pyq:'PYQ'};
 const tag=c=>c==='unit_note'?'Unit notes':CAT[c]||c;
 const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.remove('hide');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.add('hide'),3500)};
@@ -85,6 +117,29 @@ const subName=id=>S.subs.find(s=>s.id===id)?.name||'Subject';
 const cov=n=>{let h=0;for(const c of String(n))h=(h*31+c.charCodeAt(0))%6;return'c'+(h+1)};
 const ini=n=>(n||'?').trim().split(/\s+/).map(w=>w[0]).slice(0,2).join('').toUpperCase();
 const link=()=>location.origin+location.pathname+'#join/'+S.c.communities.join_code;
+// ---------- push notifications ----------
+const b64=x=>{x=(x+'='.repeat((4-x.length%4)%4)).replace(/-/g,'+').replace(/_/g,'/');return Uint8Array.from([...atob(x)].map(c=>c.charCodeAt(0)))};
+const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent),standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone;
+async function pushState(){let st='unsupported';
+if(!('serviceWorker' in navigator&&'PushManager' in window&&'Notification' in window))st=isIOS&&!standalone?'ios':'unsupported';
+else if(!VAPID_KEY)st='unsupported';
+else if(Notification.permission==='denied')st='denied';
+else{try{const reg=await navigator.serviceWorker.ready;st=(await reg.pushManager.getSubscription())?'on':'off'}catch(e){st='unsupported'}}
+if(st!==S.push){S.push=st;draw()}}
+const ico=p=>`<svg class="i" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
+const I={users:ico('<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>'),
+grid:ico('<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/>'),
+cap:ico('<path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>'),
+book:ico('<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>'),
+mark:ico('<path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>'),
+user:ico('<circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/>'),
+bell:ico('<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>'),
+phone:ico('<rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/>'),
+sliders:ico('<line x1="21" y1="4" x2="14" y2="4"/><line x1="10" y1="4" x2="3" y2="4"/><line x1="21" y1="12" x2="12" y2="12"/><line x1="8" y1="12" x2="3" y2="12"/><line x1="21" y1="20" x2="16" y2="20"/><line x1="12" y1="20" x2="3" y2="20"/><line x1="14" y1="2" x2="14" y2="6"/><line x1="8" y1="10" x2="8" y2="14"/><line x1="16" y1="18" x2="16" y2="22"/>')};
+const ni=(ic,label,a,extra='',on=false,t='',tid='')=>`<button class="ni ${on?'on':''}" data-a="${a}"${t?` data-t="${t}"`:''}${tid?` data-testid="${tid}"`:''}><span class="nl2">${ic}<span>${label}</span></span>${extra}</button>`;
+const pushBtn=()=>{const m={on:['pushoff','On'],off:['pushon','Off'],ios:['pushhint','How?'],denied:['pushhint','Blocked']}[S.push];return m?ni(I.phone,'Push alerts',m[0],`<span class="mut">${m[1]}</span>`,false,'','nav-push'):''};
+const pushBanner=()=>{let d=false;try{d=localStorage.getItem('pushDismiss')==='1'}catch(e){}return S.push==='off'&&!d?`<div class="box" style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><div class="grow"><b>Get notified when classmates upload notes</b><div class="mut">Turn on push notifications on this device.</div></div><button class="btn pri" data-a="pushon">Turn on</button><button class="btn ghost" data-a="pushno">Not now</button></div>`:''};
+
 
 // ---------- data ----------
 const loadComms=async()=>{S.comms=await q(sb.from('members').select('role,status,communities(id,name,type,privacy,branch,join_code)').eq('user_id',S.user.id).neq('status','removed'))};
@@ -96,7 +151,13 @@ const loadMembers=async()=>{S.members=await q(sb.from('members').select('user_id
 async function openComm(id){const pg=$('.pg');if(pg)pg.innerHTML='<div class="empty">Loading\u2026</div>';S.c=S.comms.find(m=>m.communities?.id===id);S.view='comm';S.tab='overview';S.subj=null;S.flt='';S.q='';S.n=6;S.f={cat:'class_note',per:'all'};await Promise.all([loadSubs(),loadNotes(),loadMembers()]);draw()}
 
 // ---------- pieces ----------
-const card=n=>{const sn=subName(n.subject_id),on=S.saved.has(n.id);return `<article class="card" data-a="note" data-id="${n.id}" data-testid="note-card-${n.id}"><div class="cover ${cov(sn)}"><span class="pill">${tag(n.category)}</span><button class="bm" data-a="bm" data-id="${n.id}" aria-label="Save" data-testid="save-${n.id}">${on?'\u2605':'\u2606'}</button><span class="pn">${n.note_files.length} page${n.note_files.length==1?'':'s'}</span></div><div class="cb"><div class="meta">${esc(sn)}${n.unit_no?' \u00b7 Unit '+n.unit_no:''}</div><h3>${esc(n.topic||'Untitled')}</h3><div class="foot"><span class="av">${ini(n.uploader?.name)}</span><span>${esc(n.uploader?.name||'')}</span><span>${n.helpful_count?'\u2665 '+n.helpful_count:dlabel(n.class_date)}</span></div></div></article>`};
+const IC={doc:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8M8 9h2"/></svg>',
+bm:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>',
+bmf:'<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>'};
+const ago=d=>{const n=Math.round((new Date(iso(new Date())+'T00:00')-new Date(d+'T00:00'))/864e5),w=Math.floor(n/7);return n<=0?'Today':n===1?'Yesterday':n<7?n+' days ago':n<30?w+(w===1?' week ago':' weeks ago'):new Date(d+'T00:00').toLocaleDateString('en-IN',{day:'numeric',month:'short'})};
+const head=(e,t)=>`<div class="eyebrow2">${e}</div><h1 class="ph">${t}</h1>`;
+const card=n=>{const sn=subName(n.subject_id),on=S.saved.has(n.id),pg=n.note_files.length;
+return `<article class="card" data-a="note" data-id="${n.id}" data-testid="note-card-${n.id}"><div class="cover ${cov(sn)}"><span class="doc">${IC.doc}</span><button class="bm ${on?'on':''}" data-a="bm" data-id="${n.id}" aria-label="${on?'Remove from saved':'Save'}" data-testid="save-${n.id}">${on?IC.bmf:IC.bm}</button><span class="pn">${pg} page${pg==1?'':'s'}</span></div><div class="cb"><div class="r1"><span class="meta" style="color:var(--coral)">${esc(sn)}</span>${n.helpful_count?`<span class="hv">\u2665 ${n.helpful_count}</span>`:''}</div><h3>${esc(n.topic||'Untitled')}</h3><div class="sub">${n.unit_no?'Unit '+n.unit_no+' \u00b7 ':''}${tag(n.category)}</div><div class="foot"><span class="av2 ${cov(n.uploader?.name||'x')}">${ini(n.uploader?.name)}</span><span class="who">${esc(n.uploader?.name||'')}</span><span class="ago">${ago(n.class_date)}</span></div></div></article>`};
 const grid=l=>`<div class="grid">${l.map(card).join('')}</div>`;
 const empty=t=>`<div class="empty">${t}</div>`;
 function dated(l){if(!l.length)return empty('No notes here yet. Share the first one.');const sh=l.slice(0,S.n),g={};sh.forEach(n=>(g[n.class_date]??=[]).push(n));
@@ -108,7 +169,7 @@ if(S.subj){l=l.filter(n=>n.subject_id===S.subj);const s=S.stab;l=s==='class'?l.f
 else if(S.tab==='saved')l=l.filter(n=>S.saved.has(n.id));
 else{if(S.f.cat!=='all')l=l.filter(n=>n.category===S.f.cat);if(S.flt)l=l.filter(n=>n.subject_id===S.flt);if(S.f.per!=='all')l=l.filter(n=>Date.now()-new Date(n.class_date+'T00:00')<S.f.per*864e5)}
 return match(l)}
-const body=()=>{const l=listFor();return S.subj&&S.stab==='unit'?units(match(S.notes.filter(n=>n.subject_id===S.subj))):S.tab==='saved'&&!S.subj?(l.length?dated(l):empty('Nothing saved yet. Tap the star on any note to keep it here.')):dated(l)};
+const body=()=>{const l=listFor();return S.subj&&S.stab==='unit'?units(match(S.notes.filter(n=>n.subject_id===S.subj))):S.tab==='saved'&&!S.subj?(l.length?dated(l):empty('Nothing saved yet. Tap the bookmark icon on any note to keep it here.')):dated(l)};
 const opt=(o,sel)=>o.map(([v,l])=>`<option value="${v}" ${String(v)===String(sel)?'selected':''}>${esc(l)}</option>`).join('');
 const tools=f=>`<div class="tools"><input id="q" class="in" data-testid="notes-search-input" placeholder="Search by topic, subject or person" value="${esc(S.q)}">${f?`<button class="btn ghost" data-a="filt" data-testid="filters-button">Filters</button>`:''}</div>${f&&S.showF?`<div class="panel" data-testid="filters-panel"><label>Type<select id="fc" class="in">${opt([['class_note',CAT.class_note],['unit_note',CAT.unit_note],['assignment','Assignments'],['pyq','PYQs']],S.f.cat)}</select></label><button class="btn ghost" data-a="clearf" data-testid="clear-filters-button">Clear filters</button></div>`:''}`;
 const tabsBar=(list,cur,a)=>`<div class="chips">${list.map(([k,l])=>`<button class="chip ${cur===k?'on':''}" data-a="${a}" data-t="${k}">${l}</button>`).join('')}</div>`;
@@ -119,13 +180,12 @@ function authView(){return `<div class="auth"><div class="brand" style="padding:
 <div class="stack"><input id="nm" class="in" placeholder="Name (new accounts only)"><input id="em" type="email" class="in" placeholder="Email"><input id="pw" type="password" class="in" placeholder="Password (at least 6 characters)">
 <div class="two"><button data-a="signin" class="btn pri">Login</button><button data-a="signup" class="btn ghost">Create account</button></div><button data-a="google" class="btn ghost">Continue with Google</button></div></div>`}
 
-function side(){const inC=S.view==='comm',un=S.notifs.filter(n=>!n.is_read).length;
-return `<aside class="side"><div class="brand">Study<b>Sync</b></div><div class="nav"><button class="ni ${S.view==='home'?'on':''}" data-a="home" data-testid="nav-home">My communities</button>
-${inC?`<div class="nl">${esc(S.c.communities.name||'Community')}</div>${[['overview','Overview'],['classroom','Classroom'],['subjects','Subjects'],['saved','Saved'],['members','Members']].map(([k,l])=>`<button class="ni ${S.tab===k&&!S.subj?'on':''}" data-a="tab" data-t="${k}" data-testid="nav-${k}">${l}</button>`).join('')}`:''}
-<button class="ni" data-a="bell" data-testid="nav-alerts">Alerts${un?`<span class="av" style="width:20px;height:20px">${un}</span>`:''}</button></div>
-<button class="me" data-a="profile" title="Your profile" style="width:100%;text-align:left"><span class="av">${ini(S.name)}</span><span class="grow" style="overflow:hidden;text-overflow:ellipsis">${esc(S.name)}</span><span class="mut">Profile</span></button><button class="ni" data-a="theme">Light / dark</button><button class="ni" data-a="out">Log out</button></aside>`}
-
-function homeView(){return `<div class="hero"><div class="eyebrow">${greet()}</div><h1>${esc(S.name.split(' ')[0]||'there')}, <em>what are we studying today?</em></h1><p>Open a community to see today's notes, or start a new one for your class or friends.</p>
+function side(){const inC=S.view==='comm',un=S.notifs.filter(n=>!n.is_read).length,bad=un?`<span class="av" style="width:20px;height:20px">${un}</span>`:'';
+return `<aside class="side"><div class="brand">Study<b>Sync</b></div><div class="nav">${ni(I.users,'My communities','home','',S.view==='home','','nav-home')}
+${inC?`<div class="nl">${esc(S.c.communities.name||'Community')}</div>${[['overview','Overview',I.grid],['classroom','Classroom',I.cap],['subjects','Subjects',I.book],['saved','Saved',I.mark],['members','Members',I.user]].map(([k,l,ic])=>ni(ic,l,'tab','',S.tab===k&&!S.subj,k,'nav-'+k)).join('')}`:''}
+${ni(I.bell,'Alerts','bell',bad,false,'','nav-alerts')}${pushBtn()}</div>
+<button class="me" data-a="profile" title="Your profile" style="width:100%;text-align:left"><span class="av">${ini(S.name)}</span><span class="grow" style="overflow:hidden;text-overflow:ellipsis">${esc(S.name)}</span><span class="mut">Profile</span></button>${ni(I.sliders,'Settings','settings','',false,'','nav-settings')}</aside>`}
+function homeView(){return `${pushBanner()}<div class="hero"><div class="eyebrow">${greet()}</div><h1>${esc(S.name.split(' ')[0]||'there')}, <em>what are we studying today?</em></h1><p>Open a community to see today's notes, or start a new one for your class or friends.</p>
 <div class="tools" style="max-width:420px"><input id="jc" class="in" placeholder="Join code"><button data-a="join" class="btn ghost">Join</button><button data-a="newc" class="btn pri">+ New</button></div></div>
 ${S.comms.length?`<div class="grid">${S.comms.map(m=>{const c=m.communities;if(!c||m.status!=='active')return `<div class="empty">${esc(c?.name||'Community')} \u00b7 waiting for approval</div>`;
 return `<article class="card" style="cursor:default"><div class="cover ${cov(c.name||'x')}" data-a="openc" data-id="${c.id}" style="cursor:pointer"><span class="pill">${esc(c.branch||'')} \u00b7 ${esc(c.privacy)}</span></div><div class="cb"><h3 style="min-height:0">${esc(c.name||'Untitled community')}</h3><div class="foot"><span>Your role: ${m.role==='admin'?'Admin':m.role==='cr'?'CR':'Member'}</span></div><div class="two" style="margin-top:10px"><button class="btn pri" data-a="openc" data-id="${c.id}">Open</button>${m.role==='admin'?`<button class="btn ghost dng" data-a="delc" data-id="${c.id}">Delete</button>`:''}</div></div></article>`}).join('')}</div>`:empty('No communities yet. Create one, or join with a code from a friend.')}`}
@@ -133,37 +193,44 @@ return `<article class="card" style="cursor:default"><div class="cover ${cov(c.n
 function overview(){const me=S.notes.filter(n=>n.uploaded_by===S.user.id),days=new Set(me.map(n=>n.class_date)),wk=S.notes.filter(n=>n.category==='class_note'&&Date.now()-new Date(n.class_date+'T00:00')<7*864e5).length;
 let d=new Date(),st=0;if(!days.has(iso(d)))d=new Date(Date.now()-864e5);while(days.has(iso(d))){st++;d=new Date(d-864e5)}
 const td=S.notes.filter(n=>n.category==='class_note'&&n.class_date===iso(new Date())),ts=new Set(td.map(n=>n.subject_id)).size;
-return `<div class="hero" data-testid="overview-summary"><div class="eyebrow">${greet()}, ${esc(S.name.split(' ')[0])}</div><h1>${td.length?`${td.length} new note${td.length>1?'s':''} today from <em>${ts} subject${ts>1?'s':''}</em>`:'No notes shared <em>yet today</em>'}</h1><p>${td.length?'Catch up in the Classroom, or add what you wrote in class.':'Be the first to share what was taught today.'}</p><div class="two" style="max-width:360px"><button class="btn pri" data-a="upl">Share a note</button><button class="btn ghost" data-a="tab" data-t="classroom" style="background:#fff8;color:inherit">Open Classroom</button></div></div>
+return `${pushBanner()}<div class="hero" data-testid="overview-summary"><div class="eyebrow">${greet()}, ${esc(S.name.split(' ')[0])}</div><h1>${td.length?`${td.length} new note${td.length>1?'s':''} today from <em>${ts} subject${ts>1?'s':''}</em>`:'No notes shared <em>yet today</em>'}</h1><p>${td.length?'Catch up in the Classroom, or add what you wrote in class.':'Be the first to share what was taught today.'}</p><div class="two" style="max-width:360px"><button class="btn pri" data-a="upl">Share a note</button><button class="btn ghost" data-a="tab" data-t="classroom" style="background:#fff8;color:inherit">Open Classroom</button></div></div>
 <div class="metrics"><div class="metric"><b>${wk}</b><span>Class notes this week</span></div><div class="metric"><b>${me.length}</b><span>Notes you shared</span></div><div class="metric"><b>${[...S.saved].filter(id=>S.notes.some(n=>n.id===id)).length}</b><span>Saved by you</span></div><div class="metric"><b>${st}</b><span>Day sharing streak</span></div></div>
 <h2 class="sec">Latest class notes</h2>${(()=>{const l=S.notes.filter(n=>n.category==='class_note');return l.length?grid(l.slice(0,6)):empty('No class notes yet.')})()}`}
 
-function classroom(){return `<div class="eyebrow" style="color:var(--mut);margin-bottom:8px">${S.f.cat==='all'?'All types':CAT[S.f.cat]}${S.f.per!=='all'?' \u00b7 last '+S.f.per+' days':''}</div>${tools(true)}<div class="chips"><button class="chip ${!S.flt?'on':''}" data-a="chip" data-id="">All subjects</button>${S.subs.map(s=>`<button class="chip ${S.flt===s.id?'on':''}" data-a="chip" data-id="${s.id}">${esc(s.name)}</button>`).join('')}</div><div id="grid" data-testid="notes-grid">${body()}</div>`}
+function classroom(){return `${head('Your classroom','Notes from your class')}<div class="eyebrow" style="color:var(--mut);margin-bottom:8px">${S.f.cat==='all'?'All types':CAT[S.f.cat]}${S.f.per!=='all'?' \u00b7 last '+S.f.per+' days':''}</div>${tools(true)}<div class="chips"><button class="chip ${!S.flt?'on':''}" data-a="chip" data-id="">All subjects</button>${S.subs.map(s=>`<button class="chip ${S.flt===s.id?'on':''}" data-a="chip" data-id="${s.id}">${esc(s.name)}</button>`).join('')}</div><div id="grid" data-testid="notes-grid">${body()}</div>`}
 
-function subjects(){return `${S.subs.length?`<div class="grid">${S.subs.map(s=>{const k=S.notes.filter(n=>n.subject_id===s.id).length;return `<article class="card" style="cursor:default"><div class="cover ${cov(s.name)}" data-a="subj" data-id="${s.id}" style="cursor:pointer"><span class="pill">${k} note${k==1?'':'s'}</span></div><div class="cb"><h3 style="min-height:0;cursor:pointer" data-a="subj" data-id="${s.id}">${esc(s.name)}${s.choice_group?' <span class="mut">(option)</span>':''}</h3>${staff()?`<div class="two"><button class="btn ghost" data-a="rensub" data-id="${s.id}">Rename</button><button class="btn ghost" data-a="arch" data-id="${s.id}">Hide</button></div>`:''}</div></article>`}).join('')}</div>`:empty('No subjects yet.')}${staff()?`<div style="margin-top:16px"><button class="btn pri" data-a="addsub">+ Add subject</button></div>`:''}`}
+function subjects(){return `${head('This semester','Subjects')}${S.subs.length?`<div class="grid">${S.subs.map(s=>{const k=S.notes.filter(n=>n.subject_id===s.id).length;return `<article class="card" style="cursor:default"><div class="cover ${cov(s.name)}" data-a="subj" data-id="${s.id}" style="cursor:pointer"><span class="pill">${k} note${k==1?'':'s'}</span></div><div class="cb"><h3 style="min-height:0;cursor:pointer" data-a="subj" data-id="${s.id}">${esc(s.name)}${s.choice_group?' <span class="mut">(option)</span>':''}</h3>${staff()?`<div class="two"><button class="btn ghost" data-a="rensub" data-id="${s.id}">Rename</button><button class="btn ghost" data-a="arch" data-id="${s.id}">Hide</button></div>`:''}</div></article>`}).join('')}</div>`:empty('No subjects yet.')}${staff()?`<div style="margin-top:16px"><button class="btn pri" data-a="addsub">+ Add subject</button></div>`:''}`}
 
 function subjView(){const s=S.subs.find(x=>x.id===S.subj);return `<button class="btn ghost" data-a="subjback" style="margin-bottom:12px">\u2190 Subjects</button><h2 class="sec" style="margin-top:0">${esc(s?.name)}</h2>${tabsBar([['class','Class Notes (Daily)'],['unit','Units'],['assign','Assignments'],['pyq','PYQs'],['imp','Important']],S.stab,'stab')}${tools(false)}<div id="grid">${body()}</div>`}
 
-function members(){const c=S.c.communities;return `<div class="box"><div>Join code: <b style="font-size:20px;letter-spacing:.08em">${esc(c.join_code)}</b></div><div class="lnk">${esc(link())}</div><div class="acts" style="margin:0"><button class="btn ghost" data-a="copy" data-v="${esc(link())}">Copy link</button><a class="btn ghost" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent('Join the notes group for '+c.name+': '+link())}">WhatsApp</a>${staff()?`<button class="btn ghost" data-a="newcode">Reset code</button>`:''}</div></div>
+function members(){const c=S.c.communities;return `${head('People','Members')}<div class="box"><div>Join code: <b style="font-size:20px;letter-spacing:.08em">${esc(c.join_code)}</b></div><div class="lnk">${esc(link())}</div><div class="acts" style="margin:0"><button class="btn ghost" data-a="copy" data-v="${esc(link())}">Copy link</button><a class="btn ghost" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent('Join the notes group for '+c.name+': '+link())}">WhatsApp</a>${staff()?`<button class="btn ghost" data-a="newcode">Reset code</button>`:''}</div></div>
 ${S.members.filter(m=>m.status!=='removed').map(m=>`<div class="row"><span class="av">${ini(m.profiles?.name)}</span><div class="grow"><b>${esc(m.profiles?.name||'Student')}</b> <span class="mut">${m.status==='pending'?'wants to join':m.role}</span></div>${staff()&&m.role!=='admin'&&m.user_id!==S.user.id?(m.status==='pending'?`<button class="btn pri" data-a="mstat" data-u="${m.user_id}" data-s="active">Approve</button>`:'')+(S.c.role==='admin'&&m.status==='active'?`<button class="btn ghost" data-a="role" data-u="${m.user_id}" data-r="${m.role==='cr'?'member':'cr'}">${m.role==='cr'?'Remove CR':'Make CR'}</button>`:'')+`<button class="btn ghost" data-a="mstat" data-u="${m.user_id}" data-s="removed">Remove</button>`:''}</div>`).join('')}`}
 
-function commView(){if(S.subj)return subjView();const t=S.tab;return t==='overview'?overview():t==='classroom'?classroom():t==='subjects'?subjects():t==='saved'?`${tools(false)}<div id="grid">${body()}</div>`:members()}
+function commView(){if(S.subj)return subjView();const t=S.tab;return t==='overview'?overview():t==='classroom'?classroom():t==='subjects'?subjects():t==='saved'?`${head('Your collection','Notes you want to revisit')}${tools(false)}<div id="grid">${body()}</div>`:members()}
 const title=()=>S.view==='home'?'My communities':S.subj?subName(S.subj):{overview:'Overview',classroom:'Classroom',subjects:'Subjects',saved:'Saved notes',members:'Members'}[S.tab];
 function draw(){document.body.classList.remove('nav');if(!S.user){$('#app').innerHTML=authView();return}
 $('#app').innerHTML=`<div class="shell">${side()}<div class="ov" data-a="menu"></div><main><header class="top"><button class="hb" data-a="menu" aria-label="Menu">\u2630</button><div class="tt">${esc(title())}</div>${S.view==='comm'?`<button class="btn pri" data-a="upl" data-testid="open-upload-button">+ Share a note</button>`:''}</header><section class="pg">${S.view==='home'?homeView():commView()}</section></main></div>`}
 
 // ---------- modal / upload / viewer ----------
 const modal=h=>{$('#modal').innerHTML=h?`<div class="mo" data-a="close"><div class="sh">${h}</div></div>`:''};
-document.addEventListener('keydown',e=>{if(e.key==='Escape')modal('')});
+document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement)$('#fs')?.remove()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){if($('#fs'))$('#fs').remove();else modal('')}const c=$('#fsc');if(c&&e.key==='ArrowRight')c.scrollBy({left:c.clientWidth,behavior:'smooth'});if(c&&e.key==='ArrowLeft')c.scrollBy({left:-c.clientWidth,behavior:'smooth'})});
 const entry=()=>`<div class="ent"><div class="g2"><select class="s in">${opt(S.subs.map(s=>[s.id,s.name]),S.subj)}</select><select class="t in">${opt(Object.entries(CAT))}</select></div><div class="g3"><input class="u in" type="number" min="1" placeholder="Unit no. (optional)"><input class="p in" placeholder="Topic, e.g. Partial Differentiation"></div><label class="drop"><input class="f" type="file" multiple accept="image/*,application/pdf"><span class="dt">Drop photos or PDFs here, or tap to choose</span></label></div>`;
-async function squash(f){if(!f.type.startsWith('image/'))return f;const b=await createImageBitmap(f),r=Math.min(1,1800/Math.max(b.width,b.height)),c=document.createElement('canvas');c.width=b.width*r;c.height=b.height*r;c.getContext('2d').drawImage(b,0,0,c.width,c.height);return new Promise(ok=>c.toBlob(ok,'image/jpeg',.8))}
+async function squash(f){if(!f.type.startsWith('image/'))return{b:f,ext:'pdf',type:f.type};
+let bmp;try{bmp=await createImageBitmap(f)}catch(e){throw new Error(f.name+': this image format is not supported. Use JPG, PNG or PDF.')}
+const big=Math.max(bmp.width,bmp.height),keep=['image/jpeg','image/png','image/webp'].includes(f.type);
+if(keep&&f.size<=1.5*1048576&&big<=2560)return{b:f,ext:f.type==='image/png'?'png':f.type==='image/webp'?'webp':'jpg',type:f.type};
+const r=Math.min(1,2560/big),c=document.createElement('canvas');c.width=Math.round(bmp.width*r);c.height=Math.round(bmp.height*r);c.getContext('2d').drawImage(bmp,0,0,c.width,c.height);
+const b=await new Promise(ok=>c.toBlob(ok,'image/jpeg',.9));return{b,ext:'jpg',type:'image/jpeg'}}
 async function showNote(id){const n=S.notes.find(x=>x.id===id),sn=subName(n.subject_id);
 const mine=n.uploaded_by===S.user.id||staff();
 const [f,lk,sg]=await Promise.all([q(sb.from('note_files').select('file_path,file_type').eq('note_id',id).order('page_no')),q(sb.from('likes').select('note_id').eq('note_id',id).eq('user_id',S.user.id)),mine?q(sb.from('note_suggestions').select('id,field,new_value,comment,profiles:profiles!note_suggestions_suggested_by_fkey(name)').eq('note_id',id).eq('status','pending')):[]]);
 const sgh=sg.length?`<div class="box"><b>Suggested corrections</b>${sg.map(x=>`<div class="row" style="margin:8px 0 0"><div class="grow"><b>${esc(x.profiles?.name||'Someone')}</b> suggests <i>${esc(x.field)}</i>: ${esc(x.new_value||'')}${x.comment?`<div class="mut">${esc(x.comment)}</div>`:''}</div><button class="btn pri" data-a="accsug" data-id="${x.id}" data-n="${id}">Accept</button><button class="btn ghost" data-a="rejsug" data-id="${x.id}" data-n="${id}">Reject</button></div>`).join('')}</div>`:'';
 const u=f.length?await q(sb.storage.from('notes').createSignedUrls(f.map(x=>x.file_path),3600)):[],sv=S.saved.has(id);
-const pages=f.map((x,i)=>{const url=u[i]?.signedUrl;return x.file_type==='pdf'?`<iframe src="${url}" style="width:100%;height:60vh;border:1px solid var(--line);border-radius:12px"></iframe><p><a href="${url}" download>Download PDF</a></p>`:`<div class="wrap"><img src="${url}" class="pgimg" data-a="zoom" alt="Page ${i+1}"></div><p class="mut"><a href="${url}" download target="_blank" rel="noopener">Download page ${i+1}</a></p>`}).join('');
+S.cur=f.map((x,i)=>({type:x.file_type,url:u[i]?.signedUrl}));S.fz=1;
+const pages=f.map((x,i)=>{const url=u[i]?.signedUrl;return x.file_type==='pdf'?`<iframe src="${url}" style="width:100%;height:60vh;border:1px solid var(--line);border-radius:12px"></iframe><p><a href="${url}" target="_blank" rel="noopener">Open PDF in new tab</a> \u00b7 <a href="${url}" download>Download PDF</a></p>`:`<div class="wrap"><img src="${url}" class="pgimg" data-a="full" data-i="${i}" alt="Page ${i+1}"></div><p class="mut"><a href="${url}" download target="_blank" rel="noopener">Download page ${i+1}</a></p>`}).join('');
 modal(`<div data-testid="note-detail-modal"><div class="shc ${cov(sn)}"><div><span class="pill">${tag(n.category)}</span><h3 style="margin:8px 0 2px;font-size:20px">${esc(n.topic||'Untitled')}</h3><div style="font-size:13px">${esc(sn)}${n.unit_no?' \u00b7 Unit '+n.unit_no:''} \u00b7 ${dlabel(n.class_date)} \u00b7 ${esc(n.uploader?.name||'')}</div></div><button class="bm" data-a="close">\u2715</button></div>
-<div class="shb"><div class="acts"><button class="btn ${sv?'pri':'ghost'}" data-a="bm" data-id="${id}" data-m="1">${sv?'\u2605 Saved':'\u2606 Save'}</button><button class="btn ${lk.length?'pri':'ghost'}" data-a="like" data-id="${id}" data-on="${lk.length?1:0}">\u2665 Helpful</button><button class="btn ghost" data-a="share">Share</button><button class="btn ghost" data-a="sugg" data-id="${id}">Suggest correction</button>${mine?`<button class="btn ghost" data-a="edit" data-id="${id}">Edit</button>`:''}${mine?`<button class="btn ghost dng" data-a="del" data-id="${id}">Delete</button>`:''}</div>${sgh}${pages||empty('This note has no files.')}</div></div>`)}
+<div class="shb"><div class="acts"><button class="btn pri" data-a="full" data-testid="fullscreen-button">Full screen</button><button class="btn ${sv?'pri':'ghost'}" data-a="bm" data-id="${id}" data-m="1">${sv?'\u2605 Saved':'\u2606 Save'}</button><button class="btn ${lk.length?'pri':'ghost'}" data-a="like" data-id="${id}" data-on="${lk.length?1:0}">\u2665 Helpful</button><button class="btn ghost" data-a="share">Share</button><button class="btn ghost" data-a="sugg" data-id="${id}">Suggest correction</button>${mine?`<button class="btn ghost" data-a="edit" data-id="${id}">Edit</button>`:''}${mine?`<button class="btn ghost dng" data-a="del" data-id="${id}">Delete</button>`:''}</div>${sgh}${pages||empty('This note has no files.')}</div></div>`)}
 
 // ---------- actions ----------
 const A={
@@ -178,7 +245,27 @@ async saveedit({id}){const u=+$('#eu').value||null;if($('#et').value==='unit_not
 await q(sb.from('notes').update({subject_id:$('#es').value,category:$('#et').value,unit_no:u,topic:$('#ep').value.trim()||null,class_date:$('#ed').value}).eq('id',id));modal('');await loadNotes();draw();toast('Note updated')},
 async accsug({id,n}){await rpc('accept_suggestion',{p_id:id});await loadNotes();await showNote(n);draw();toast('Correction accepted')},
 async rejsug({id,n}){const r=prompt('Reason (optional)');await rpc('reject_suggestion',{p_id:id,p_reason:r||null});await showNote(n);toast('Correction rejected')},
-async out(){await sb.auth.signOut()},
+full({i}){const l=S.cur||[];if(!l.length)return toast('This note has no files');
+if(l.every(x=>x.type==='pdf')){window.open(l[0].url,'_blank','noopener');return}
+const d=document.createElement('div');d.id='fs';d.className='fs';S.fi=+i||0;
+d.innerHTML=`<div class="fsb"><button class="btn" data-a="fsx" aria-label="Close">\u2190 Back</button><div class="grow" id="fsn"></div><button class="btn" data-a="fz">Zoom</button><a class="btn" id="fsdl" download target="_blank" rel="noopener">Download</a></div><div class="fsc" id="fsc">${l.map((x,k)=>`<div class="fsl">${x.type==='pdf'?`<iframe src="${x.url}"></iframe>`:`<img src="${x.url}" alt="Page ${k+1}">`}</div>`).join('')}</div>`;
+document.body.appendChild(d);const c=$('#fsc'),upd=()=>{S.fi=Math.round(c.scrollLeft/c.clientWidth);$('#fsn').textContent=(S.fi+1)+' of '+l.length;$('#fsdl').href=l[S.fi].url};
+c.scrollLeft=S.fi*c.clientWidth;upd();c.addEventListener('scroll',upd);
+try{d.requestFullscreen&&d.requestFullscreen().catch(()=>{})}catch(e){}},
+fz(){$$('#fs .fsl')[S.fi]?.classList.toggle('z')},
+fsx(){if(document.fullscreenElement)document.exitFullscreen();$('#fs')?.remove()},
+settings(){const d=document.documentElement.dataset.theme==='dark';modal(`<div class="shb" data-testid="settings-modal"><div class="acts" style="justify-content:space-between"><h3 style="margin:0">Settings</h3><button class="btn ghost" data-a="close">Close</button></div>
+<div class="row"><div class="grow"><b>Profile</b><div class="mut">Name, college, branch, year, password</div></div><button class="btn ghost" data-a="profile">Edit</button></div>
+<div class="row"><div class="grow"><b>Theme</b><div class="mut">Currently ${d?'dark':'light'}</div></div><button class="btn ghost" data-a="themeset">Switch to ${d?'light':'dark'}</button></div>
+<div class="row"><div class="grow"><b>Log out</b><div class="mut">${esc(S.user.email||'')}</div></div><button class="btn ghost dng" data-a="out">Log out</button></div></div>`)},
+themeset(){A.theme();A.settings()},
+async out(){modal('');try{const reg=await navigator.serviceWorker?.getRegistration();const sub=await reg?.pushManager.getSubscription();if(sub){await sb.from('push_subscriptions').delete().eq('endpoint',sub.endpoint);await sub.unsubscribe()}}catch(e){}await sb.auth.signOut()},
+async pushon(){if(!VAPID_KEY)throw new Error('Push alerts are not set up yet');const reg=await navigator.serviceWorker.ready;if(await Notification.requestPermission()!=='granted'){S.push='denied';draw();throw new Error('Notifications were blocked. Allow them for this site in your browser settings.')}
+let sub=await reg.pushManager.getSubscription();if(!sub)sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:b64(VAPID_KEY)});const j=sub.toJSON();
+await rpc('save_push_subscription',{p_endpoint:j.endpoint,p_p256dh:j.keys.p256dh,p_auth:j.keys.auth});S.push='on';draw();toast('Push alerts are on for this device')},
+async pushoff(){const reg=await navigator.serviceWorker.ready,sub=await reg.pushManager.getSubscription();if(sub){await q(sb.from('push_subscriptions').delete().eq('endpoint',sub.endpoint));await sub.unsubscribe()}S.push='off';draw();toast('Push alerts are off for this device')},
+pushno(){try{localStorage.setItem('pushDismiss','1')}catch(e){}draw()},
+pushhint(){toast(S.push==='ios'?'On iPhone: tap Share, choose Add to Home Screen, open StudySync from your Home Screen, then turn on Push alerts.':'Notifications are blocked. Allow them for this site in your browser settings.')},
 async signin(){if(!$('#em').value.trim()||!$('#pw').value)throw new Error('Enter your email and password');const{error}=await sb.auth.signInWithPassword({email:$('#em').value.trim(),password:$('#pw').value});if(error)throw error},
 async signup(){if(!$('#em').value.trim())throw new Error('Enter your email');if($('#pw').value.length<6)throw new Error('Password must be at least 6 characters');const{data,error}=await sb.auth.signUp({email:$('#em').value.trim(),password:$('#pw').value,options:{data:{full_name:$('#nm').value.trim()}}});if(error)throw error;if(!data.session)toast('A confirmation link was sent to your email. Open it, then log in.')},
 async google(){const{error}=await sb.auth.signInWithOAuth({provider:'google',options:{redirectTo:location.href.split('#')[0]}});if(error)throw error},
@@ -205,9 +292,9 @@ try{for(const e of $$('.ent')){if(e.querySelector('.f').files.length&&e.querySel
 const all=$$('.f').reduce((a,i)=>a+i.files.length,0);let done=0;$('#prog').classList.remove('hide');const prog=()=>{$('#upb').style.width=Math.round(done/(all||1)*100)+'%';$('#upt').textContent='Uploaded '+done+' of '+all+' files'};prog();
 for(const e of $$('.ent')){const files=[...e.querySelector('.f').files];if(!files.length)continue;
 const row=await q(sb.from('notes').insert({community_id:cid(),subject_id:e.querySelector('.s').value,uploaded_by:uid,category:e.querySelector('.t').value,unit_no:+e.querySelector('.u').value||null,topic:e.querySelector('.p').value.trim()||null,class_date:$('#ud').value,upload_batch_id:batch}).select('id').single());
-for(const[i,f]of files.entries()){if(f.size>20971520)throw new Error(f.name+' is larger than 20 MB');const b=await squash(f),pdf=f.type==='application/pdf',path=`${cid()}/${uid}/${crypto.randomUUID()}.${pdf?'pdf':'jpg'}`;
-const{error}=await sb.storage.from('notes').upload(path,b,{contentType:pdf?'application/pdf':'image/jpeg'});if(error)throw error;
-await q(sb.from('note_files').insert({note_id:row.id,file_path:path,file_type:pdf?'pdf':'image',page_no:i+1,size_bytes:b.size}));done++;prog()}n++}
+for(const[i,f]of files.entries()){if(f.size>20971520)throw new Error(f.name+' is larger than 20 MB');const r=await squash(f),pdf=r.ext==='pdf',path=`${cid()}/${uid}/${crypto.randomUUID()}.${r.ext}`;
+const{error}=await sb.storage.from('notes').upload(path,r.b,{contentType:r.type});if(error)throw error;
+await q(sb.from('note_files').insert({note_id:row.id,file_path:path,file_type:pdf?'pdf':'image',page_no:i+1,size_bytes:r.b.size}));done++;prog()}n++}
 if(!n)throw new Error('Choose at least one file with a subject');await rpc('publish_upload',{p_batch:batch});modal('');await loadNotes();if(!S.subj)S.tab='classroom';draw();toast('Notes uploaded. Everyone was notified.')}
 finally{btn.disabled=false;btn.textContent='Share note'}},
 note({id}){return showNote(id)},
@@ -226,13 +313,20 @@ async bell(){await loadNotifs();modal(`<div class="shb"><div class="acts" style=
 };
 async function joinCode(code){if(!code.trim())return toast('Enter a join code');const r=await rpc('join_community',{p_code:code});await loadComms();toast(r.status==='pending'?'Request sent. Wait for approval.':'Joined the community');S.view='home';draw();if(r.status==='active')await openComm(r.community_id)}
 
-document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b||!A[b.dataset.a])return;if(b.dataset.a==='close'&&e.target!==b&&!b.matches('button'))return;if(b.dataset.a==='zoom'){b.classList.toggle('z');return}if(b.dataset.a==='tab'||b.dataset.a==='home')document.body.classList.remove('nav');go(()=>A[b.dataset.a](b.dataset))});
+document.addEventListener('click',e=>{const im=e.target.closest('#fs .fsl img');if(im){const t=Date.now();if(t-(S.lt||0)<320)im.closest('.fsl').classList.toggle('z');S.lt=t;return}const b=e.target.closest('[data-a]');if(!b||!A[b.dataset.a])return;if(b.dataset.a==='close'&&e.target!==b&&!b.matches('button'))return;if(b.dataset.a==='zoom'){b.classList.toggle('z');return}if(b.dataset.a==='tab'||b.dataset.a==='home')document.body.classList.remove('nav');go(()=>A[b.dataset.a](b.dataset))});
 document.addEventListener('input',e=>{if(e.target.id==='q'){S.q=e.target.value;S.n=6;$('#grid').innerHTML=body()}});
 document.addEventListener('change',e=>{const t=e.target;if(t.id==='fc'){S.f.cat=t.value;S.n=6;draw()}if(t.id==='fp'){S.f.per=t.value;S.n=6;draw()}
 if(t.classList.contains('f')){const n=t.files.length;t.parentElement.querySelector('.dt').textContent=n?n+' file'+(n>1?'s':'')+' selected':'Drop photos or PDFs here, or tap to choose'}});
 
-async function boot(){if(!S.user){draw();return}await go(async()=>{await Promise.all([loadComms(),loadNotifs(),loadSaved()]);S.name=(await q(sb.from('profiles').select('name').eq('id',S.user.id).single())).name||'Student';S.view='home';draw();const h=location.hash;if(h.startsWith('#join/')){history.replaceState(null,'',location.pathname);await joinCode(h.slice(6))}})}
+async function boot(){if(!S.user){draw();return}
+const safe=async f=>{try{await f()}catch(e){S.err=e.message||String(e)}};
+await Promise.all([safe(loadComms),safe(loadNotifs),safe(loadSaved),safe(async()=>{S.name=(await q(sb.from('profiles').select('name').eq('id',S.user.id).maybeSingle()))?.name||(S.user.email||'Student').split('@')[0]})]);
+S.view='home';draw();pushState();if(S.err){toast('Some data could not load: '+S.err);S.err=''}
+const h=location.hash;if(h.startsWith('#join/')){history.replaceState(null,'',location.pathname);await go(()=>joinCode(h.slice(6)))}}
+const fail=m=>{const a=$('#app');if(a&&!a.innerHTML.trim())a.innerHTML='<div class="auth"><h1>Something went wrong</h1><p style="color:var(--mut)">'+esc(m)+'</p><button class="btn pri" onclick="location.reload()">Reload</button></div>'};
+addEventListener('error',e=>fail(e.message));addEventListener('unhandledrejection',e=>fail(e.reason?.message||String(e.reason)));
 try{const t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 if(SUPABASE_URL.startsWith('PASTE')){$('#app').innerHTML='<div class="auth">Open <b>config.js</b>, paste your Supabase URL and key, save, then reload this page.</div>'}
 else sb.auth.onAuthStateChange((ev,ses)=>{const u=ses?.user||null;if(u?.id===S.user?.id&&ev!=='INITIAL_SESSION')return;S.user=u;setTimeout(boot,0)});
 </script></body></html>

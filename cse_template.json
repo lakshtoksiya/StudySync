@@ -1,0 +1,358 @@
+[
+  {
+    "course": "Engineering",
+    "branch": "CSE",
+    "term_no": 1,
+    "term_name": "Sem 1",
+    "subjects": [
+      {
+        "name": "Mathematics - I",
+        "choice_group": null,
+        "sort_order": 1
+      },
+      {
+        "name": "Electrochemistry, Battery Science and Engineering Materials",
+        "choice_group": null,
+        "sort_order": 2
+      },
+      {
+        "name": "Basics of Civil Engineering",
+        "choice_group": "sem1_option",
+        "sort_order": 3
+      },
+      {
+        "name": "Engineering Mechanics",
+        "choice_group": "sem1_option",
+        "sort_order": 4
+      },
+      {
+        "name": "Basics of Electrical Engineering",
+        "choice_group": "sem1_option",
+        "sort_order": 5
+      },
+      {
+        "name": "Programming for Problem Solving",
+        "choice_group": null,
+        "sort_order": 6
+      },
+      {
+        "name": "Computer Workshop",
+        "choice_group": null,
+        "sort_order": 7
+      },
+      {
+        "name": "Indian Knowledge System",
+        "choice_group": null,
+        "sort_order": 8
+      },
+      {
+        "name": "Yoga and Meditation",
+        "choice_group": null,
+        "sort_order": 9
+      }
+    ]
+  },
+  {
+    "course": "Engineering",
+    "branch": "CSE",
+    "term_no": 2,
+    "term_name": "Sem 2",
+    "subjects": [
+      {
+        "name": "Mathematics - II",
+        "choice_group": null,
+        "sort_order": 1
+      },
+      {
+        "name": "Optics, Semiconductors and Quantum Mechanics",
+        "choice_group": null,
+        "sort_order": 2
+      },
+      {
+        "name": "Basics of Mechanical Engineering",
+        "choice_group": "sem2_option",
+        "sort_order": 3
+      },
+      {
+        "name": "Engineering Graphics",
+        "choice_group": "sem2_option",
+        "sort_order": 4
+      },
+      {
+        "name": "Basics of Electronics Engineering",
+        "choice_group": null,
+        "sort_order": 5
+      },
+      {
+        "name": "Communication Skills",
+        "choice_group": null,
+        "sort_order": 6
+      },
+      {
+        "name": "Computer Organization",
+        "choice_group": null,
+        "sort_order": 7
+      },
+      {
+        "name": "Engineering Exploration",
+        "choice_group": null,
+        "sort_order": 8
+      },
+      {
+        "name": "NSS / Sports / Club Activities",
+        "choice_group": null,
+        "sort_order": 9
+      }
+    ]
+  },
+  {
+    "course": "Engineering",
+    "branch": "CSE",
+    "term_no": 3,
+    "term_name": "Sem 3",
+    "subjects": [
+      {
+        "name": "Engineering Mathematics - III (Statistical Differential Calculus)",
+        "choice_group": null,
+        "sort_order": 1
+      },
+      {
+        "name": "Data Structure",
+        "choice_group": null,
+        "sort_order": 2
+      },
+      {
+        "name": "Operating System",
+        "choice_group": null,
+        "sort_order": 3
+      },
+      {
+        "name": "Multidisciplinary Minor",
+        "choice_group": null,
+        "sort_order": 4
+      },
+      {
+        "name": "Open Elective - I",
+        "choice_group": null,
+        "sort_order": 5
+      },
+      {
+        "name": "Universal Human Values",
+        "choice_group": null,
+        "sort_order": 6
+      },
+      {
+        "name": "Psychology",
+        "choice_group": null,
+        "sort_order": 7
+      }
+    ]
+  },
+  {
+    "course": "Engineering",
+    "branch": "CSE",
+    "term_no": 4,
+    "term_name": "Sem 4",
+    "subjects": [
+      {
+        "name": "Discrete Mathematics Structure",
+        "choice_group": null,
+        "sort_order": 1
+      },
+      {
+        "name": "Database Management System",
+        "choice_group": null,
+        "sort_order": 2
+      },
+      {
+        "name": "Object Oriented Programming",
+        "choice_group": null,
+        "sort_order": 3
+      },
+      {
+        "name": "Open Elective - II",
+        "choice_group": null,
+        "sort_order": 4
+      },
+      {
+        "name": "Multidisciplinary Minor",
+        "choice_group": null,
+        "sort_order": 5
+      },
+      {
+        "name": "Environmental Science",
+        "choice_group": null,
+        "sort_order": 6
+      },
+      {
+        "name": "Personality Development",
+        "choice_group": null,
+        "sort_order": 7
+      },
+      {
+        "name": "Technical Communication",
+        "choice_group": null,
+        "sort_order": 8
+      }
+    ]
+  },
+  {
+    "course": "Engineering",
+    "branch": "CSE",
+    "term_no": 5,
+    "term_name": "Sem 5",
+    "subjects": [
+      {
+        "name": "Design and Analysis of Algorithms",
+        "choice_group": null,
+        "sort_order": 1
+      },
+      {
+        "name": "Principles of Software Engineering",
+        "choice_group": null,
+        "sort_order": 2
+      },
+      {
+        "name": "Formal Language and Automata Theory",
+        "choice_group": null,
+        "sort_order": 3
+      },
+      {
+        "name": "Multidisciplinary Minor - Artificial Intelligence",
+        "choice_group": "sem5_minor",
+        "sort_order": 4
+      },
+      {
+        "name": "Multidisciplinary Minor - Java Programming",
+        "choice_group": "sem5_minor",
+        "sort_order": 5
+      },
+      {
+        "name": "Professional Elective I - Data Mining and Data Warehousing",
+        "choice_group": "sem5_pe1",
+        "sort_order": 6
+      },
+      {
+        "name": "Professional Elective I - Cloud Computing",
+        "choice_group": "sem5_pe1",
+        "sort_order": 7
+      },
+      {
+        "name": "Professional Elective I - Image Processing",
+        "choice_group": "sem5_pe1",
+        "sort_order": 8
+      },
+      {
+        "name": "Open Elective III - Behavioural Science and Organization",
+        "choice_group": null,
+        "sort_order": 9
+      }
+    ]
+  },
+  {
+    "course": "Engineering",
+    "branch": "CSE",
+    "term_no": 6,
+    "term_name": "Sem 6",
+    "subjects": [
+      {
+        "name": "Computer Network",
+        "choice_group": null,
+        "sort_order": 1
+      },
+      {
+        "name": "Principles of Compiler Design",
+        "choice_group": null,
+        "sort_order": 2
+      },
+      {
+        "name": "Professional Elective II - Machine Learning",
+        "choice_group": "sem6_pe2",
+        "sort_order": 3
+      },
+      {
+        "name": "Professional Elective II - Computer Vision",
+        "choice_group": "sem6_pe2",
+        "sort_order": 4
+      },
+      {
+        "name": "Professional Elective II - Software Testing and Quality Assurance",
+        "choice_group": "sem6_pe2",
+        "sort_order": 5
+      },
+      {
+        "name": "Professional Elective III - Natural Language Processing",
+        "choice_group": "sem6_pe3",
+        "sort_order": 6
+      },
+      {
+        "name": "Professional Elective III - Neural Network",
+        "choice_group": "sem6_pe3",
+        "sort_order": 7
+      },
+      {
+        "name": "Professional Elective III - Cryptography and Network Security",
+        "choice_group": "sem6_pe3",
+        "sort_order": 8
+      },
+      {
+        "name": "Multidisciplinary Minor - Neural Network",
+        "choice_group": "sem6_minor",
+        "sort_order": 9
+      },
+      {
+        "name": "Multidisciplinary Minor - Python Programming",
+        "choice_group": "sem6_minor",
+        "sort_order": 10
+      }
+    ]
+  },
+  {
+    "course": "Engineering",
+    "branch": "CSE",
+    "term_no": 7,
+    "term_name": "Sem 7",
+    "subjects": [
+      {
+        "name": "Artificial Intelligence",
+        "choice_group": null,
+        "sort_order": 1
+      },
+      {
+        "name": "Data Analytics",
+        "choice_group": null,
+        "sort_order": 2
+      },
+      {
+        "name": "Professional Elective IV - Information Retrieval",
+        "choice_group": "sem7_pe4",
+        "sort_order": 3
+      },
+      {
+        "name": "Professional Elective IV - Internet of Things (IoT)",
+        "choice_group": "sem7_pe4",
+        "sort_order": 4
+      },
+      {
+        "name": "Professional Elective V - Recommender Systems",
+        "choice_group": "sem7_pe5",
+        "sort_order": 5
+      },
+      {
+        "name": "Professional Elective V - Deep Learning",
+        "choice_group": "sem7_pe5",
+        "sort_order": 6
+      },
+      {
+        "name": "Project",
+        "choice_group": null,
+        "sort_order": 7
+      },
+      {
+        "name": "Research Methodology",
+        "choice_group": null,
+        "sort_order": 8
+      }
+    ]
+  }
+]
